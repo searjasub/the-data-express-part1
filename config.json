@@ -8,5 +8,14 @@
       "Home",
       "/"
     ]
+  ],
+  "Questions": [
+    "What was the name of your first dog",
+    "What city where you born",
+    "What is your mothers maiden name",
+    "What was the name of you elementary school",
+    "What is your nickname",
+    "What is the name of your best friend",
+    "What was your first college class"
   ]
 }
