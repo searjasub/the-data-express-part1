@@ -11,11 +11,11 @@
   ],
   "questions": [
     ["1","What was the name of your first dog?"],
-    ["2","What city where you born"],
-    ["3","What is your mothers maiden name"],
-    ["4","What was the name of you elementary school"],
-    ["5","What is your nickname"],
-    ["6","What is the name of your best friend"],
-    ["7","What was your first college class"]
+    ["2","What city where you born?"],
+    ["3","What is your mothers maiden name?"],
+    ["4","What was the name of you elementary school?"],
+    ["5","What is your nickname?"],
+    ["6","What is the name of your best friend?"],
+    ["7","What was your first college class?"]
   ]
 }
