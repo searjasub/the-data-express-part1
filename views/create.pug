@@ -16,9 +16,7 @@ block content
             br
             label(for='questions') Security Question 1:
             select(name='questions')
-                option(value="Human") Human
-                option(value="Vampire") Vampire
-                option(value="Werewolf") Werewolf
-                option(value="Zombie") Zombie
+                each item in config.questions
+                    option(value=item[0]) #{item[0]}
             br
         input(type='submit', value='Add Person')
