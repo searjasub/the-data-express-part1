@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad43d6d0-4f07-4d48-9518-13b1c4bb739e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/create.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/create.pug" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573572696936</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="config.json">
+      <created>1573572986971</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573572986971</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +131,7 @@
     <MESSAGE value="added config and header" />
     <MESSAGE value="Routes" />
     <MESSAGE value="index.js updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="index.js updated" />
+    <MESSAGE value="config.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="config.json" />
   </component>
 </project>
