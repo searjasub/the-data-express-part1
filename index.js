@@ -23,6 +23,7 @@ app.use(cookieParser('We like cookies'));
 
 const urlencodedParser = bodyParser.urlencoded({extended:false});
 
-
+app.get('/create', routes.create);
+app.post('/create', urlencodedParser, routes.create);
 
 app.listen(3001);

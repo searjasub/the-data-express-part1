@@ -5,11 +5,11 @@ exports.create = (req, res) => {
         "title": "Create",
         "config": config
     });
-}
+};
 
 exports.login = (req, res) => {
     res.render('login',{
         "title": "Login",
             "config": config
     });
-}
+};
