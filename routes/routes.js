@@ -1,4 +1,4 @@
-const config = require('/config');
+const config = require('../config');
 
 exports.create = (req, res) => {
     res.render('create',{
