@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        link(href='style.css', rel='stylesheet')
+        header
+            nav
+                ul
+                    each item in config.menu
+                        div(class="header")
+                            div(class="header-right")
+                                a(href=item[1])
+                                    div(class='menu_item')
+                                        li(id=item[0]) #{item[0]}
+    body
+        block content
