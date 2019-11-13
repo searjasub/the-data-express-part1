@@ -34,6 +34,16 @@ exports.index = (req, res) => {
     });
 };
 
+exports.index = (req, res) => {
+    Person.find((err, person) => {
+        if (err) return console.error(err);
+        res.render('index', {
+            title: 'People List',
+            people: person,
+            "config":config
+        });
+    });
+};
 
 exports.create = (req, res) => {
     res.render('create', {
@@ -54,7 +64,7 @@ exports.createPerson = (req, res) => {
     });
     person.save((err, person) => {
         if (err) return console.error(err);
-        // console.log(req.body.name + ' added');
+        console.log(req.body.name + ' added');
     });
     res.redirect('/');
 };
