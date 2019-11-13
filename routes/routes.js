@@ -52,10 +52,11 @@ exports.create = (req, res) => {
     })
 };
 
+const pass = require('./passwords.js')
 exports.createPerson = (req, res) => {
     var person = new Person({
         username: req.body.username,
-        password: req.body.password,
+        password: pass.saltAndHash(req.body.password),
         age: req.body.age,
         email: req.body.email,
         question1: req.body.question1,
