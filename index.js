@@ -9,11 +9,6 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-
-
-
-
-
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname + '/public')));
@@ -25,6 +20,6 @@ const urlencodedParser = bodyParser.urlencoded({
 
 app.get('/', routes.index);
 app.get('/create', routes.create);
-app.post('/create', urlencodedParser, routes.createPerson());
+app.post('/create', urlencodedParser, routes.createPerson);
 
 app.listen(3001);

@@ -15,9 +15,9 @@ var personSchema = mongoose.Schema({
     password: String,
     age: String,
     email: String,
-    question1 : String,
-    question2 : String,
-    question3 : String
+    question1: String,
+    question2: String,
+    question3: String
 });
 
 
@@ -28,14 +28,15 @@ exports.index = (req, res) => {
         if (err) return console.error(err);
         res.render('index', {
             title: 'People List',
-            people: person
+            people: person,
+            "config": config
         });
     });
 };
 
 
-exports.create = (req, res) =>  {
-    res.render('create',{
+exports.create = (req, res) => {
+    res.render('create', {
         "title": "Create",
         "config": config
     })
@@ -47,9 +48,9 @@ exports.createPerson = (req, res) => {
         password: req.body.password,
         age: req.body.age,
         email: req.body.email,
-        question1 : req.body.question1,
-        question2 : req.body.question2,
-        question3 : req.body.question3
+        question1: req.body.question1,
+        question2: req.body.question2,
+        question3: req.body.question3
     });
     person.save((err, person) => {
         if (err) return console.error(err);
@@ -59,8 +60,8 @@ exports.createPerson = (req, res) => {
 };
 
 exports.login = (req, res) => {
-    res.render('login',{
+    res.render('login', {
         "title": "Login",
-            "config": config
+        "config": config
     });
 };
