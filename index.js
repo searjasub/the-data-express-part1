@@ -6,8 +6,15 @@ const path = require('path');
 const routes = require('./routes/routes.js');
 const bcrypt = require('bcrypt-nodejs');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const auth = require('./routes/auth.js');
 
 const app = express();
+
+app.use(session({
+    'secret': 'sew suppah secerete',
+    'unset': 'destroy' //can logout users by setting req.session to null
+}))
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
@@ -21,5 +28,8 @@ const urlencodedParser = bodyParser.urlencoded({
 app.get('/', routes.index);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
+
+app.post('/login', urlencodedParser, auth.login);
+app.post('/logout', urlencodedParser, auth.logout);
 
 app.listen(3010);

@@ -22,6 +22,7 @@ var personSchema = mongoose.Schema({
 
 
 var Person = mongoose.model('People_Collection', personSchema);
+exports.Person = Person;
 
 exports.index = (req, res) => {
     Person.find((err, person) => {
