@@ -1,21 +1,3 @@
-/*html {*/
-/*    background-color: #227;*/
-/*}*/
-/*body {*/
-/*    font-family: verdana, arial, sans-serif;*/
-/*    font-size: 12px;*/
-/*    width: 80%;*/
-/*    padding: 20px;*/
-/*    background-color: #eeb;*/
-/*}*/
-
-
-
-
-
-
-
-/************************************/
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
@@ -75,7 +57,7 @@ table.gridtable td {
 }
 
 .menu_item {
-    width: 80px;
+    width: 100px;
     text-align: center;
 }
 .header a:hover {
