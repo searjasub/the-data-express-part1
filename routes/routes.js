@@ -71,8 +71,14 @@ exports.create = (req, res) => {
     }
     res.render('create', {
         "title": "Create",
-        "config": config
+        "config": config,
+        time: formatDate()
     })
+};
+
+exports.logout = (req, res) => {
+    res.clearCookie('beenHereBefore');
+    res.redirect('/');
 };
 
 const pass = require('./passwords.js');
@@ -101,6 +107,7 @@ exports.login = (req, res) => {
     }
     res.render('login', {
         "title": "Login",
-        "config": config
+        "config": config,
+        time: formatDate()
     });
 };
