@@ -1,5 +1,6 @@
 const config = require('../config');
 var mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data');
 
@@ -23,14 +24,28 @@ var personSchema = mongoose.Schema({
 var Person = mongoose.model('People_Collection', personSchema);
 
 exports.edit = (req, res) => {
-    Person.find((err, person) => {
-        if (err) return console.error(err);
-        res.render('edit', {
-            title: 'People List',
-            people: person,
-            "config": config
+    if(req.cookies.beenHereBefore === 'yes') {
+        Person.find((err, person) => {
+            if (err) return console.error(err);
+            res.render('edit', {
+                title: 'People List',
+                people: person,
+                "config": config,
+                cookie : "Already been here before"
+            });
         });
-    });
+    } else {
+        res.cookie('beenHereBefore', 'yes');
+        Person.find((err, person) => {
+            if (err) return console.error(err);
+            res.render('edit', {
+                title: 'People List',
+                people: person,
+                "config": config,
+                cookie : "First Time Here"
+            });
+        });
+    }
 };
 
 exports.create = (req, res) => {

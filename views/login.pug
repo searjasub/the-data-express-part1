@@ -1,18 +1,20 @@
-extends header
-
-block content
-    div(class="container-form")
-        form(id='form', method='get', action='/create')
-            div(class="form-group")
-                input(type='text', name='username' autocomplete="off" required="required")
-                label(for='username' class="control-label") Username
-                i(class="bar")
-            div(class="form-group")
-                input(type='password', name='password' autocomplete="off" required="required")
-                label(for='password' class="control-label") Password
-                i(class="bar")
+html
+    head
+        link(href='style.css', rel='stylesheet')
+    body
+        div(class="container-form")
+            h2 Data Express Part 1
+            form(id='form', method='get', action='/create')
+                div(class="form-group")
+                    input(type='text', name='username' autocomplete="off" required="required")
+                    label(for='username' class="control-label") Username
+                    i(class="bar")
+                div(class="form-group")
+                    input(type='password', name='password' autocomplete="off" required="required")
+                    label(for='password' class="control-label") Password
+                    i(class="bar")
+                div(class="button-container")
+                    input(class="button" value="Login" id="login-btn" type="submit")
             div(class="button-container")
-                input(class="button" value="Login" id="login-btn" type="submit")
-        div(class="button-container")
-            a(href="/register")
-                input(class="button" value="Sign up" id="sign-up" type="submit")
+                a(href="/register")
+                    input(class="button" value="Sign up" id="sign-up" type="submit")

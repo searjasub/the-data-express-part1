@@ -18,21 +18,12 @@ const urlencodedParser = bodyParser.urlencoded({
     extended:true
 });
 
-app.get('/edit',routes.edit ,(req, res) => {
-    if(req.cookies.beenHereBefore === 'yes') {
-        res.send('You have been here before.');
-    } else {
-        res.cookie('beenHereBefore', 'yes');
-        res.send('This is your first time here');
-    }
-});
-
 app.get('/clear', (req, res) => {
     res.clearCookie('beenHereBefore');
     res.redirect('/edit');
 });
 
-// app.get('/edit', routes.index);
+app.get('/edit', routes.edit);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
 app.get('/', routes.login);
