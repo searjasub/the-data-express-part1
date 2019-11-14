@@ -22,24 +22,13 @@ var personSchema = mongoose.Schema({
 
 var Person = mongoose.model('People_Collection', personSchema);
 
-exports.index = (req, res) => {
+exports.edit = (req, res) => {
     Person.find((err, person) => {
         if (err) return console.error(err);
-        res.render('index', {
+        res.render('edit', {
             title: 'People List',
             people: person,
             "config": config
-        });
-    });
-};
-
-exports.index = (req, res) => {
-    Person.find((err, person) => {
-        if (err) return console.error(err);
-        res.render('index', {
-            title: 'People List',
-            people: person,
-            "config":config
         });
     });
 };
