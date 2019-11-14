@@ -3,10 +3,17 @@ extends header
 block content
     div(class="container")
         form(id='form', method='get', action='/create')
-            label(for='username') Username:
-                input(type='text', name='username')
-                br
-            label(for='password') Password:
-                input(type='password', name='password')
-                br
-            input(type='submit', value='login')
+            div(class="form-group")
+                input(type='text', name='username' autocomplete="off" required="required")
+                label(for='username' class="control-label") Username:
+                i(class="bar")
+            div(class="form-group")
+                input(type='password', name='password' autocomplete="off" required="required")
+                label(for='password' class="control-label") Password:
+                i(class="bar")
+            div(class="button-container")
+                a(href="/login")
+                    input(class="button" value="Login" id="login-btn")
+            div(class="button-container")
+                a(href="/login")
+                    input(class="button" value="Sign up" id="sign-up")
