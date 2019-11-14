@@ -18,8 +18,9 @@ const urlencodedParser = bodyParser.urlencoded({
     extended:true
 });
 
-app.get('/', routes.index);
+app.get('/edit', routes.index);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
+app.get('/', routes.login);
 
 app.listen(3010);
