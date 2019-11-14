@@ -1,13 +1,18 @@
 {
   "menu": [
     [
+      "Login",
+      "/"
+    ],
+    [
       "Create User",
       "create"
     ],
     [
-      "Home",
-      "/"
+      "Edit",
+      "edit"
     ]
+
   ],
   "category1": [
     ["1","What was the name of your first dog?"],
