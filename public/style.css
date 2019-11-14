@@ -156,6 +156,7 @@ table.gridtable td {
 
 .button-container {
     text-align: center;
+    height: 5rem;
 }
 
 .form-group {
@@ -251,6 +252,14 @@ table.gridtable td {
     display: none;
 }
 
+.form-group input[type="customType"]{
+    line-height: 1;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 .form-group input:focus,
 .form-group input:valid,
 .form-group input.form-file,
@@ -281,17 +290,12 @@ table.gridtable td {
     left: 0;
 }
 
-.button-container {
-    height: 10rem;
-}
-
 .button {
     position: relative;
     border: 1px;
     font-size: 1.1rem;
     color: white;
     background-color: #4f93ce;
-    margin: 3rem 0 5rem 0;
     padding: 0.75rem 3rem;
     cursor: pointer;
     user-select: none;
