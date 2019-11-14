@@ -1,42 +1,53 @@
 extends header
 
 block content
-    div(class="container")
+    div(class="container-form")
         form(id='form', method='post', action='/create')
-            label(for='username') Username:
-                input(type='text', name='username')
-                br
-                label(for='password') Password:
-                    input(type='password', name='password')
-                    br
-                label(for='email') Email:
-                input(type='text', name='email')
-                br
-                label(for='age') Age:
-                input(type='text', name='age')
-                br
-                label(for='questions1') Security Question 1:
+            div(class="form-group")
+                input(type='text', name='username' autocomplete="off" required="required")
+                label(for='username' class="control-label") Username:
+                i(class="bar")
+            div(class="form-group")
+                input(type='password', name='password' autocomplete="off" required="required")
+                label(for='password' class="control-label") Password:
+                i(class="bar")
+            div(class="form-group")
+                input(type='text', name='email' autocomplete="off" required="required")
+                label(for='email' class="control-label") Email:
+                i(class="bar")
+            div(class="form-group")
+                input(type='text', name='age' autocomplete="off" required="required")
+                label(for='age' class="control-label") Age:
+                i(class="bar")
+            div(class="form-group")
+                label(for='questions1' class="control-label-select") Security Question 1:
                 select(name='questions1')
-                    each item in config.questions
+                    each item in config.category1
                         option(value=item[1]) #{item[1]}
-                br
-                label(for='answer1') Answer 1:
-                    input(type='text', name='answer1')
-                br
-                label(for='questions2') Security Question 2:
+                i(class="bar")
+            div(class="form-group")
+                input(type='text', name='answer1' autocomplete="off" required="required")
+                label(for='answer1' class="control-label") Answer 1:
+                i(class="bar")
+            div(class="form-group")
+                label(for='questions2' class="control-label-select") Security Question 2:
                 select(name='questions2')
-                    each item in config.questions
+                    each item in config.category2
                         option(value=item[1]) #{item[1]}
-                br
-                label(for='answer2') Answer 2:
-                    input(type='text', name='answer2')
-                br
-                label(for='questions3') Security Question 3:
+                i(class="bar")
+            div(class="form-group")
+                input(type='text', name='answer2' autocomplete="off" required="required")
+                label(for='answer2' class="control-label") Answer 2:
+                i(class="bar")
+            div(class="form-group")
+                label(for='questions3' class="control-label-select") Security Question 3:
                 select(name='questions3')
-                    each item in config.questions
+                    each item in config.category3
                         option(value=item[1]) #{item[1]}
-                br
-                label(for='answer3') Answer 3:
-                    input(type='text', name='answer3')
-                br
-            input(type='submit', value='Add Person')
+                i(class="bar")
+            div(class="form-group")
+                input(type='text', name='answer3' autocomplete="off" required="required")
+                label(for='answer3' class="control-label") Answer 3:
+                i(class="bar")
+            div(class="button-container" id="button-container")
+                input(type='submit', value='Add Person' class="button")

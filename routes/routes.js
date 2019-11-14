@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data');
 
-
 var mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error:'));
 mdb.once('open', function (callback) {
@@ -15,9 +14,9 @@ var personSchema = mongoose.Schema({
     password: String,
     age: String,
     email: String,
-    question1: String,
-    question2: String,
-    question3: String
+    answer1: String,
+    answer2: String,
+    answer3: String
 });
 
 
@@ -52,20 +51,20 @@ exports.create = (req, res) => {
     })
 };
 
-const pass = require('./passwords.js')
+const pass = require('./passwords.js');
 exports.createPerson = (req, res) => {
     var person = new Person({
         username: req.body.username,
         password: pass.saltAndHash(req.body.password),
         age: req.body.age,
         email: req.body.email,
-        question1: req.body.question1,
-        question2: req.body.question2,
-        question3: req.body.question3
+        answer1: req.body.answer1,
+        answer2: req.body.answer2,
+        answer3: req.body.answer3
     });
     person.save((err, person) => {
         if (err) return console.error(err);
-        console.log(req.body.name + ' added');
+        console.log(req.body.username + ' added');
     });
     res.redirect('/');
 };
