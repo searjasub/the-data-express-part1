@@ -49,6 +49,11 @@ exports.edit = (req, res) => {
 };
 
 exports.create = (req, res) => {
+    if(req.cookies.beenHereBefore === 'yes'){
+
+    } else {
+        res.cookie('beenHereBefore', 'yes')
+    }
     res.render('create', {
         "title": "Create",
         "config": config
@@ -74,6 +79,11 @@ exports.createPerson = (req, res) => {
 };
 
 exports.login = (req, res) => {
+    if(req.cookies.beenHereBefore === 'yes'){
+
+    } else {
+        res.cookie('beenHereBefore', 'yes')
+    }
     res.render('login', {
         "title": "Login",
         "config": config

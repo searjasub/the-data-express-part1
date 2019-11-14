@@ -18,10 +18,10 @@ const urlencodedParser = bodyParser.urlencoded({
     extended:true
 });
 
-app.get('/clear', (req, res) => {
+app.get('/logout', (req, res) => {
     res.clearCookie('beenHereBefore');
-    res.redirect('/edit');
-});
+    res.redirect('/');
+})
 
 app.get('/edit', routes.edit);
 app.get('/create', routes.create);
