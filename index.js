@@ -21,7 +21,7 @@ const urlencodedParser = bodyParser.urlencoded({
 app.get('/logout', (req, res) => {
     res.clearCookie('beenHereBefore');
     res.redirect('/');
-})
+});
 
 app.get('/edit', routes.edit);
 app.get('/create', routes.create);

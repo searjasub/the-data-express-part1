@@ -1,16 +1,16 @@
 const config = require('../config');
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data');
 
-var mdb = mongoose.connection;
+let mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error:'));
 mdb.once('open', function (callback) {
 
 });
 
-var personSchema = mongoose.Schema({
+let personSchema = mongoose.Schema({
     username: String,
     password: String,
     age: String,
@@ -20,18 +20,33 @@ var personSchema = mongoose.Schema({
     answer3: String
 });
 
-
-var Person = mongoose.model('People_Collection', personSchema);
+function formatDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    let hh = today.getHours();
+    let min = today.getMinutes();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    return mm + '/' + dd + '/' + yyyy + " at " + hh + ":" + min;
+}
+let Person = mongoose.model('People_Collection', personSchema);
 
 exports.edit = (req, res) => {
-    if(req.cookies.beenHereBefore === 'yes') {
+    if (req.cookies.beenHereBefore === 'yes') {
         Person.find((err, person) => {
             if (err) return console.error(err);
             res.render('edit', {
                 title: 'People List',
                 people: person,
                 "config": config,
-                cookie : "Already been here before"
+                cookie: "Already been here before",
+                time: formatDate()
             });
         });
     } else {
@@ -42,7 +57,7 @@ exports.edit = (req, res) => {
                 title: 'People List',
                 people: person,
                 "config": config,
-                cookie : "First Time Here"
+                cookie: "First Time Here"
             });
         });
     }
