@@ -14,7 +14,7 @@ exports.getActiveUser = async (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  req.session.activeUserName = null;
+  req.session = null;
 };
 
 exports.login = async (req, res) => {
