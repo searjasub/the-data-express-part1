@@ -36,7 +36,18 @@ function formatDate() {
     return mm + '/' + dd + '/' + yyyy + " at " + hh + ":" + min;
 }
 let Person = mongoose.model('People_Collection', personSchema);
+exports.Person = Person;
 
+exports.index = (req, res) => {
+    Person.find((err, person) => {
+        if (err) return console.error(err);
+        res.render('index', {
+            title: 'People List',
+            people: person,
+            "config": config
+        });
+    });
+};
 exports.edit = (req, res) => {
     if (req.cookies.beenHereBefore === 'yes') {
         Person.find((err, person) => {
