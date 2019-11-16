@@ -22,10 +22,12 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(cookieParser('We like cookies'));
 
 const urlencodedParser = bodyParser.urlencoded({
-    extended:true
+    extended: true
 });
 
-app.get('/', routes.index);
+app.get('/', routes.login);
+app.get('/logout', routes.logout);
+app.get('/edit', routes.edit);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
 

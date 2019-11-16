@@ -1,10 +1,10 @@
-
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
+
 h1 {
     padding-bottom: 70px;
     padding-left: 120px;
@@ -19,9 +19,10 @@ header {
     padding: 20px 10px;
 }
 
-li{
-    list-style:  none;
+li {
+    list-style: none;
 }
+
 table.gridtable {
     color: #337;
     border-width: 1px;
@@ -60,6 +61,7 @@ table.gridtable td {
     width: 100px;
     text-align: center;
 }
+
 .header a:hover {
     background-color: dodgerblue;
     color: white;
@@ -154,6 +156,7 @@ table.gridtable td {
 
 .button-container {
     text-align: center;
+    height: 5rem;
 }
 
 .form-group {
@@ -189,6 +192,17 @@ table.gridtable td {
 
 .form-group .control-label {
     position: absolute;
+    top: 0.25rem;
+    pointer-events: none;
+    padding-left: 0.125rem;
+    z-index: 1;
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: normal;
+    transition: all 0.28s ease;
+}
+
+.form-group .control-label-select {
     top: 0.25rem;
     pointer-events: none;
     padding-left: 0.125rem;
@@ -238,10 +252,18 @@ table.gridtable td {
     display: none;
 }
 
+.form-group input[type="customType"]{
+    line-height: 1;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 .form-group input:focus,
 .form-group input:valid,
 .form-group input.form-file,
-.form-group input.has-value{
+.form-group input.has-value {
     color: #333;
 }
 
@@ -263,13 +285,9 @@ table.gridtable td {
     color: #337ab7;
 }
 
-.form-group input:focus ~ .bar::before{
+.form-group input:focus ~ .bar::before {
     width: 100%;
     left: 0;
-}
-
-.button-container {
-    height: 10rem;
 }
 
 .button {
@@ -278,7 +296,6 @@ table.gridtable td {
     font-size: 1.1rem;
     color: white;
     background-color: #4f93ce;
-    margin: 3rem 0 5rem 0;
     padding: 0.75rem 3rem;
     cursor: pointer;
     user-select: none;
