@@ -1,6 +1,7 @@
-extends header
 
 block content
+    head
+        link(href='style.css', rel='stylesheet')
     div(class="container-form")
         form(id='form', method='post', action='/create')
             h2 Create your Profile
@@ -17,7 +18,7 @@ block content
                 label(for='email' class="control-label") Email:
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='age' autocomplete="off" required="required")
+                input(type='number', name='age' autocomplete="off" required="required" min="1" max="117")
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
@@ -52,3 +53,5 @@ block content
                 i(class="bar")
             div(class="button-container" id="button-container")
                 input(type='submit', value='Create User' class="button")
+        div(class="button-container" id="button-container")
+            input(type='submit', value='Go Back' class="button" onclick="location.href = 'http://localhost:3010/';")
