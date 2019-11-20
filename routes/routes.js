@@ -90,13 +90,16 @@ exports.pushEdit = async (req, res) => {
         return;
     }
 
-    person.username = req.body.username,
-    person.password = pass.saltAndHash(req.body.password),
-    person.age = req.body.age,
-    person.email = req.body.email,
-    person.answer1 = req.body.answer1,
-    person.answer2 = req.body.answer2,
-    person.answer3 = req.body.answer3
+    person.username = req.body.username;
+    person.age = req.body.age;
+    person.email = req.body.email;
+    person.answer1 = req.body.answer1;
+    person.answer2 = req.body.answer2;
+    person.answer3 = req.body.answer3;
+
+    if(person.password !== req.body.password){
+        person.password = pass.saltAndHash(req.body.password);
+    }
         
     person.save((err, person) => {
         if (err) return console.error(err);
