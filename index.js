@@ -24,14 +24,17 @@ const urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
-app.get('/', routes.login);
-app.get('/logout', routes.logout);
-app.get('/edit', routes.edit);
-app.get('/create', routes.create);
-app.get('/home', routes.home);
+const asyncRoute = route => (req, res, next = console.error) =>
+  Promise.resolve(route(req, res)).catch(next)
 
-app.post('/create', urlencodedParser, routes.createPerson);
-app.post('/login', urlencodedParser, auth.login);
-app.post('/logout', urlencodedParser, auth.logout);
+app.get('/', asyncRoute(routes.login));
+app.get('/logout', asyncRoute(routes.logout));
+app.get('/edit', asyncRoute(routes.edit));
+app.get('/create', asyncRoute(routes.create));
+app.get('/home', asyncRoute(routes.home));
+
+app.post('/create', urlencodedParser, asyncRoute(routes.createPerson));
+app.post('/login', urlencodedParser, asyncRoute(auth.login));
+app.post('/logout', urlencodedParser, asyncRoute(auth.logout));
 
 app.listen(3010);

@@ -1,8 +1,9 @@
 const config = require('../config');
-let mongoose = require('mongoose');
+let mongoose = require('mongoose');;
+const auth = require('./auth.js');
 const cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/data');
+mongoose.connect('mongodb://localhost/data', {useNewUrlParser: true, useUnifiedTopology: true });
 
 let mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error:'));
@@ -19,6 +20,8 @@ let personSchema = mongoose.Schema({
     answer2: String,
     answer3: String
 });
+let Person = mongoose.model('People_Collection', personSchema);
+exports.Person = Person;
 
 function formatDate() {
     let today = new Date();
@@ -35,8 +38,6 @@ function formatDate() {
     }
     return mm + '/' + dd + '/' + yyyy + " at " + hh + ":" + min;
 }
-let Person = mongoose.model('People_Collection', personSchema);
-exports.Person = Person;
 
 exports.index = (req, res) => {
     Person.find((err, person) => {
@@ -49,54 +50,52 @@ exports.index = (req, res) => {
     });
 };
 
-exports.home = (req,res) => {
+exports.home = async (req,res) => {
+    person = await auth.tryLoginActiveUser(req, res);
+    if(!person){
+        return;
+    }
+
     if (req.cookies.beenHereBefore === 'yes') {
-        Person.find((err, person) => {
-            if (err) return console.error(err);
-            res.render('home', {
-                title: 'Home',
-                people: person,
-                "config": config,
-                cookie: "Already been here before",
-                time: formatDate()
-            });
+        res.render('home', {
+            title: 'Home',
+            people: person,
+            "config": config,
+            cookie: "Already been here before",
+            time: formatDate()
         });
     } else {
         res.cookie('beenHereBefore', 'yes');
-        Person.find((err, person) => {
-            if (err) return console.error(err);
-            res.render('home', {
-                title: 'Home',
-                people: person,
-                "config": config,
-                cookie: "First Time Here"
-            });
+        res.render('home', {
+            title: 'Home',
+            people: person,
+            "config": config,
+            cookie: "First Time Here"
         });
     }
 };
 
-exports.edit = (req, res) => {
+exports.edit = async (req, res) => {
+    person = await auth.tryLoginActiveUser(req, res);
+    if(!person){
+        return;
+    }
+
     if (req.cookies.beenHereBefore === 'yes') {
-        Person.find((err, person) => {
-            if (err) return console.error(err);
-            res.render('edit', {
-                title: 'People List',
-                people: person,
-                "config": config,
-                cookie: "Already been here before",
-                time: formatDate()
-            });
+        res.render('edit', {
+            title: 'People List',
+            people: person,
+            "config": config,
+            cookie: "Already been here before",
+            time: formatDate()
         });
     } else {
         res.cookie('beenHereBefore', 'yes');
-        Person.find((err, person) => {
-            if (err) return console.error(err);
-            res.render('edit', {
-                title: 'People List',
-                people: person,
-                "config": config,
-                cookie: "First Time Here"
-            });
+        res.render('edit', {
+            title: 'People List',
+            people: person,
+            "config": config,
+            cookie: "First Time Here"
         });
     }
 };

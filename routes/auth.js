@@ -1,14 +1,30 @@
 const passwords = require('./passwords');
-const Person = require('./routes').Person;
+const routes = require('./routes.js');
+
+exports.tryLoginActiveUser = async (req, res) => {
+    console.log("a");
+    person = await exports.getActiveUser(req, res);
+    if(!person){
+        console.log("b");
+        person = await exports.login(req, res);
+        if(!person){
+            console.log("c");
+            res.status(401);
+            res.send('Not logged in');
+            return false;
+        }
+    }
+    return person;
+};
 
 exports.getActiveUser = async (req, res) => {
     if(!req.session.activeUserName){
-        return null;
+        return false;
     }
 
-    let user = await Person.findOne({'username': req.session.activeUserName});
+    let user = await routes.Person.findOne({'username': req.session.activeUserName});
     if(!user){
-        user = await Person.findOne({'email': req.session.activeUserName});
+        user = await routes.Person.findOne({'email': req.session.activeUserName});
     }
     return user;
 };
@@ -19,10 +35,11 @@ exports.logout = (req, res) => {
 };
 
 exports.login = async (req, res) => {
-    let user = await Person.findOne({'username': req.body.username});
+    console.log(req.query);
+    let user = await routes.Person.findOne({'username': req.query.username});
 
     if(!user){
-        user = await Person.findOne({'email': req.body.username});
+        user = await routes.Person.findOne({'email': req.query.username});
     }
 
     if(!user){
@@ -30,12 +47,11 @@ exports.login = async (req, res) => {
         res.send('No user found');
     }
 
-    if(!passwords.verify(req.body.password, user.password)){
+    if(!passwords.verify(req.query.password, user.password)){
         res.status(401);
         res.send('Bad Password');
     }
 
     req.session.activeUserName = user.username;
-    res.status(200);
-    res.send('logged in');
+    return user;
 };
