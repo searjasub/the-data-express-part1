@@ -1,5 +1,4 @@
 const express = require('express');
-const expressSession = require('express-session');
 const pug = require('pug');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -14,7 +13,7 @@ const app = express();
 app.use(session({
     'secret': 'sew suppah secerete',
     'unset': 'destroy' //can logout users by setting req.session to null
-}))
+}));
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
@@ -29,8 +28,9 @@ app.get('/', routes.login);
 app.get('/logout', routes.logout);
 app.get('/edit', routes.edit);
 app.get('/create', routes.create);
-app.post('/create', urlencodedParser, routes.createPerson);
+app.get('/home', routes.home);
 
+app.post('/create', urlencodedParser, routes.createPerson);
 app.post('/login', urlencodedParser, auth.login);
 app.post('/logout', urlencodedParser, auth.logout);
 

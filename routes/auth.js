@@ -15,6 +15,7 @@ exports.getActiveUser = async (req, res) => {
 
 exports.logout = (req, res) => {
   req.session = null;
+  res.redirect("/")
 };
 
 exports.login = async (req, res) => {

@@ -48,6 +48,33 @@ exports.index = (req, res) => {
         });
     });
 };
+
+exports.home = (req,res) => {
+    if (req.cookies.beenHereBefore === 'yes') {
+        Person.find((err, person) => {
+            if (err) return console.error(err);
+            res.render('home', {
+                title: 'Home',
+                people: person,
+                "config": config,
+                cookie: "Already been here before",
+                time: formatDate()
+            });
+        });
+    } else {
+        res.cookie('beenHereBefore', 'yes');
+        Person.find((err, person) => {
+            if (err) return console.error(err);
+            res.render('home', {
+                title: 'Home',
+                people: person,
+                "config": config,
+                cookie: "First Time Here"
+            });
+        });
+    }
+};
+
 exports.edit = (req, res) => {
     if (req.cookies.beenHereBefore === 'yes') {
         Person.find((err, person) => {
@@ -89,12 +116,13 @@ exports.create = (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('beenHereBefore');
+    res.session = null;
     res.redirect('/');
 };
 
 const pass = require('./passwords.js');
 exports.createPerson = (req, res) => {
-    var person = new Person({
+    let person = new Person({
         username: req.body.username,
         password: pass.saltAndHash(req.body.password),
         age: req.body.age,
