@@ -75,6 +75,27 @@ exports.home = async (req,res) => {
     }
 };
 
+exports.pushEdit = async (req, res) => {
+    person = await auth.tryLoginActiveUser(req, res);
+    if(!person){
+        return;
+    }
+
+    person.username = req.body.username,
+    person.password = pass.saltAndHash(req.body.password),
+    person.age = req.body.age,
+    person.email = req.body.email,
+    person.answer1 = req.body.answer1,
+    person.answer2 = req.body.answer2,
+    person.answer3 = req.body.answer3
+        
+    person.save((err, person) => {
+        if (err) return console.error(err);
+        console.log(req.body.username + ' updated');
+    });
+    res.redirect('/');
+}
+
 exports.edit = async (req, res) => {
     person = await auth.tryLoginActiveUser(req, res);
     if(!person){

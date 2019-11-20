@@ -2,13 +2,10 @@ const passwords = require('./passwords');
 const routes = require('./routes.js');
 
 exports.tryLoginActiveUser = async (req, res) => {
-    console.log("a");
     person = await exports.getActiveUser(req, res);
     if(!person){
-        console.log("b");
         person = await exports.login(req, res);
         if(!person){
-            console.log("c");
             res.status(401);
             res.send('Not logged in');
             return false;
@@ -35,7 +32,6 @@ exports.logout = (req, res) => {
 };
 
 exports.login = async (req, res) => {
-    console.log(req.query);
     let user = await routes.Person.findOne({'username': req.query.username});
 
     if(!user){
