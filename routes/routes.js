@@ -169,7 +169,7 @@ exports.createPerson = (req, res) => {
 
 exports.login = (req, res) => {
     if(req.cookies.beenHereBefore === 'yes'){
-
+        res.clearCookie('beenHereBefore');
     } else {
         res.cookie('beenHereBefore', 'yes')
     }
