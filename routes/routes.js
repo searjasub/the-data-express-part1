@@ -97,11 +97,11 @@ exports.pushEdit = async (req, res) => {
     person.username = req.body.username;
     person.age = req.body.age;
     person.email = req.body.email;
-    person.question1 = req.question1;
+    person.question1 = req.body.question1;
     person.answer1 = req.body.answer1;
-    person.question2 = req.question2;
+    person.question2 = req.body.question2;
     person.answer2 = req.body.answer2;
-    person.question3 = req.question3;
+    person.question3 = req.body.question3;
     person.answer3 = req.body.answer3;
 
     if(person.password !== req.body.password){
