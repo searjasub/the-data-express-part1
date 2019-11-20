@@ -70,7 +70,8 @@ exports.home = async (req,res) => {
             title: 'Home',
             people: person,
             "config": config,
-            cookie: "First Time Here"
+            cookie: "First Time Here",
+            time: formatDate()
         });
     }
 };
