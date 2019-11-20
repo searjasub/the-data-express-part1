@@ -11,8 +11,7 @@ const auth = require('./routes/auth.js');
 const app = express();
 
 app.use(session({
-    'secret': 'sew suppah secerete',
-    'unset': 'destroy' //can logout users by setting req.session to null
+    'secret': 'sew suppah secerete'
 }));
 
 app.set('view engine', 'pug');

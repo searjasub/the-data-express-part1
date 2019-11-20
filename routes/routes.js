@@ -73,7 +73,8 @@ exports.home = async (req,res) => {
             title: 'Home',
             people: person,
             "config": config,
-            cookie: "First Time Here"
+            cookie: "First Time Here",
+            time: formatDate()
         });
     }
 };
@@ -94,7 +95,6 @@ exports.pushEdit = async (req, res) => {
     }
 
     person.username = req.body.username;
-    person.password = pass.saltAndHash(req.body.password);
     person.age = req.body.age;
     person.email = req.body.email;
     person.question1 = req.question1;
@@ -103,7 +103,11 @@ exports.pushEdit = async (req, res) => {
     person.answer2 = req.body.answer2;
     person.question3 = req.question3;
     person.answer3 = req.body.answer3;
-        
+
+    if(person.password !== req.body.password){
+        person.password = pass.saltAndHash(req.body.password);
+    }
+
     person.save((err, person) => {
         if (err) return console.error(err);
         console.log(req.body.username + ' updated');
@@ -151,7 +155,7 @@ exports.create = (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('beenHereBefore');
-    res.session = null;
+    req.session.destroy();
     res.redirect('/');
 };
 
@@ -178,7 +182,7 @@ exports.createPerson = (req, res) => {
 
 exports.login = (req, res) => {
     if(req.cookies.beenHereBefore === 'yes'){
-
+        res.clearCookie('beenHereBefore');
     } else {
         res.cookie('beenHereBefore', 'yes')
     }

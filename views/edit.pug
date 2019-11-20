@@ -5,19 +5,19 @@ block content
         form(id='form', method='post', action='/edit')
             h2 Edit your Profile
             div(class="form-group")
-                input(type='text', name='username' autocomplete="off" required="required")
+                input(type='text', name='username' autocomplete="off" required="required", value=person.username)
                 label(for='username' class="control-label") Username:
                 i(class="bar")
             div(class="form-group")
-                input(type='password', name='password' autocomplete="off" required="required")
+                input(type='password', name='password' autocomplete="off" required="required", value=person.password)
                 label(for='password' class="control-label") Password:
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='email' autocomplete="off" required="required")
+                input(type='text', name='email' autocomplete="off" required="required", value=person.email)
                 label(for='email' class="control-label") Email:
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='age' autocomplete="off" required="required")
+                input(type='text', name='age' autocomplete="off" required="required", value=person.age)
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
@@ -27,7 +27,7 @@ block content
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='answer1' autocomplete="off" required="required")
+                input(type='text', name='answer1' autocomplete="off" required="required", value=person.answer1)
                 label(for='answer1' class="control-label") Answer 1:
                 i(class="bar")
             div(class="form-group")
@@ -37,7 +37,7 @@ block content
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='answer2' autocomplete="off" required="required")
+                input(type='text', name='answer2' autocomplete="off" required="required", value=person.answer2)
                 label(for='answer2' class="control-label") Answer 2:
                 i(class="bar")
             div(class="form-group")
@@ -47,7 +47,7 @@ block content
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
             div(class="form-group")
-                input(type='text', name='answer3' autocomplete="off" required="required")
+                input(type='text', name='answer3' autocomplete="off" required="required", value=person.answer3)
                 label(for='answer3' class="control-label") Answer 3:
                 i(class="bar")
             div(class="button-container" id="button-container")
