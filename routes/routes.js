@@ -112,7 +112,7 @@ exports.pushEdit = async (req, res) => {
         if (err) return console.error(err);
         console.log(req.body.username + ' updated');
     });
-    res.redirect('/');
+    res.redirect('/home');
 };
 
 exports.edit = async (req, res) => {
