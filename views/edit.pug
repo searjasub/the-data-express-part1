@@ -21,7 +21,7 @@ block content
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions1' class="control-label-select") Security Question 1:
+                label(for='question1' class="control-label-select") Security Question 1:
                 select(name='questions1')
                     each item in config.category1
                         option(value=item[1]) #{item[1]}
@@ -31,7 +31,7 @@ block content
                 label(for='answer1' class="control-label") Answer 1:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions2' class="control-label-select") Security Question 2:
+                label(for='question2' class="control-label-select") Security Question 2:
                 select(name='questions2')
                     each item in config.category2
                         option(value=item[1]) #{item[1]}
@@ -41,7 +41,7 @@ block content
                 label(for='answer2' class="control-label") Answer 2:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions3' class="control-label-select") Security Question 3:
+                label(for='question3' class="control-label-select") Security Question 3:
                 select(name='questions3')
                     each item in config.category3
                         option(value=item[1]) #{item[1]}
@@ -50,9 +50,9 @@ block content
                 input(type='text', name='answer3' autocomplete="off" required="required", value=person.answer3)
                 label(for='answer3' class="control-label") Answer 3:
                 i(class="bar")
-            div(class="button-container" id="button-container")
+            div(class="button-container" id="button-container-save")
                 input(type='submit', value='Save new configuration' class="button")
     div(class="container-form")
-        form(id='form', method='post', action='/delete')
+        form(id='form2', method='post', action='/delete')
             div(class="button-container" id="button-container")
                 input(type='submit', value='Delete this account' class="button")
