@@ -148,7 +148,7 @@ exports.create = (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('beenHereBefore');
-    res.session = null;
+    req.session.destroy();
     res.redirect('/');
 };
 
