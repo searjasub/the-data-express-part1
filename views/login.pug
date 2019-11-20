@@ -4,7 +4,7 @@ html
     body
         div(class="container-form")
             h2 Data Express Part 1
-            form(id='form', method='get', action='/create')
+            form(id='form', method='get', action='/home')
                 div(class="form-group")
                     input(type='text', name='username' autocomplete="off" required="required")
                     label(for='username' class="control-label") Username
@@ -14,8 +14,7 @@ html
                     label(for='password' class="control-label") Password
                     i(class="bar")
                 div(class="button-container")
-                    a(href="/home")
-                        input(class="button" value="Login" id="login-btn" type="submit")
+                    input(class="button" value="Login" id="login-btn" type="submit")
             div(class="button-container")
                 a(href="/create")
                     input(class="button" value="Sign up" id="sign-up" type="submit")
