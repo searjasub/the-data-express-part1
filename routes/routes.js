@@ -16,8 +16,11 @@ let personSchema = mongoose.Schema({
     password: String,
     age: String,
     email: String,
+    question1: String,
     answer1: String,
+    question2: String,
     answer2: String,
+    question3: String,
     answer3: String
 });
 let Person = mongoose.model('People_Collection', personSchema);
@@ -82,7 +85,7 @@ exports.pushDelete = async (req, res) => {
     }
     Person.find({ password:person.password }).remove().exec();
     auth.logout(req, res);
-}
+};
 
 exports.pushEdit = async (req, res) => {
     person = await auth.tryLoginActiveUser(req, res);
@@ -90,20 +93,23 @@ exports.pushEdit = async (req, res) => {
         return;
     }
 
-    person.username = req.body.username,
-    person.password = pass.saltAndHash(req.body.password),
-    person.age = req.body.age,
-    person.email = req.body.email,
-    person.answer1 = req.body.answer1,
-    person.answer2 = req.body.answer2,
-    person.answer3 = req.body.answer3
+    person.username = req.body.username;
+    person.password = pass.saltAndHash(req.body.password);
+    person.age = req.body.age;
+    person.email = req.body.email;
+    person.question1 = req.question1;
+    person.answer1 = req.body.answer1;
+    person.question2 = req.question2;
+    person.answer2 = req.body.answer2;
+    person.question3 = req.question3;
+    person.answer3 = req.body.answer3;
         
     person.save((err, person) => {
         if (err) return console.error(err);
         console.log(req.body.username + ' updated');
     });
     res.redirect('/');
-}
+};
 
 exports.edit = async (req, res) => {
     person = await auth.tryLoginActiveUser(req, res);
@@ -156,8 +162,11 @@ exports.createPerson = (req, res) => {
         password: pass.saltAndHash(req.body.password),
         age: req.body.age,
         email: req.body.email,
+        question1 : req.body.question1,
         answer1: req.body.answer1,
+        question2 : req.body.question2,
         answer2: req.body.answer2,
+        question3 : req.body.question3,
         answer3: req.body.answer3
     });
     person.save((err, person) => {

@@ -21,8 +21,8 @@ block content
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions1' class="control-label-select") Security Question 1:
-                select(name='questions1')
+                label(for='question1' class="control-label-select") Security Question 1:
+                select(name='question1')
                     each item in config.category1
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
@@ -31,8 +31,8 @@ block content
                 label(for='answer1' class="control-label") Answer 1:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions2' class="control-label-select") Security Question 2:
-                select(name='questions2')
+                label(for='question2' class="control-label-select") Security Question 2:
+                select(name='question2')
                     each item in config.category2
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
@@ -41,8 +41,8 @@ block content
                 label(for='answer2' class="control-label") Answer 2:
                 i(class="bar")
             div(class="form-group")
-                label(for='questions3' class="control-label-select") Security Question 3:
-                select(name='questions3')
+                label(for='question3' class="control-label-select") Security Question 3:
+                select(name='question3')
                     each item in config.category3
                         option(value=item[1]) #{item[1]}
                 i(class="bar")
