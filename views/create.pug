@@ -1,6 +1,7 @@
-extends header
 
 block content
+    head
+        link(href='style.css', rel='stylesheet')
     div(class="container-form")
         form(id='form', method='post', action='/create')
             h2 Create your Profile
@@ -52,3 +53,5 @@ block content
                 i(class="bar")
             div(class="button-container" id="button-container")
                 input(type='submit', value='Create User' class="button")
+        div(class="button-container" id="button-container")
+            input(type='submit', value='Go Back' class="button" onclick="location.href = 'http://localhost:3010/';")
