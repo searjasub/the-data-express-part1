@@ -33,6 +33,7 @@ app.get('/edit', asyncRoute(routes.edit));
 app.get('/create', asyncRoute(routes.create));
 app.get('/home', asyncRoute(routes.home));
 
+app.post('/delete', urlencodedParser, asyncRoute(routes.pushDelete));
 app.post('/edit', urlencodedParser, asyncRoute(routes.pushEdit));
 app.post('/create', urlencodedParser, asyncRoute(routes.createPerson));
 app.post('/login', urlencodedParser, asyncRoute(auth.login));

@@ -75,6 +75,15 @@ exports.home = async (req,res) => {
     }
 };
 
+exports.pushDelete = async (req, res) => {
+    person = await auth.tryLoginActiveUser(req, res);
+    if(!person){
+        return;
+    }
+    Person.find({ password:person.password }).remove().exec();
+    auth.logout(req, res);
+}
+
 exports.pushEdit = async (req, res) => {
     person = await auth.tryLoginActiveUser(req, res);
     if(!person){
