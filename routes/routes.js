@@ -53,6 +53,13 @@ exports.index = (req, res) => {
     });
 };
 
+exports.api = async (req,res) => {
+  res.render('api', {
+      title: 'api',
+      "config": config
+  });
+};
+
 exports.home = async (req,res) => {
     person = await auth.tryLoginActiveUser(req, res);
     if(!person){

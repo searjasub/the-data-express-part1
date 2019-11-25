@@ -22,35 +22,25 @@ block content
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
-                label(for='question1' class="control-label-select") Security Question 1:
-                select(name='question1')
-                    each item in config.category1
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question1') What's your favorite OS?
             div(class="form-group")
-                input(type='text', name='answer1' autocomplete="off" required="required")
-                label(for='answer1' class="control-label") Answer 1:
-                i(class="bar")
+                div(class='answer1') A. Windows
+                div(class='answer2') B. MacOS
+                div(class='answer3') C. Linux
             div(class="form-group")
-                label(for='question2' class="control-label-select") Security Question 2:
-                select(name='question2')
-                    each item in config.category2
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question2') What is your current degree plan?
             div(class="form-group")
-                input(type='text', name='answer2' autocomplete="off" required="required")
-                label(for='answer2' class="control-label") Answer 2:
-                i(class="bar")
+                div(class='answer1') A. CS
+                div(class='answer2') B. Web
+                div(class='answer3') C. IS
+                div(class='answer4') C. SE
             div(class="form-group")
-                label(for='question3' class="control-label-select") Security Question 3:
-                select(name='question3')
-                    each item in config.category3
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question3') What is your cohert?
             div(class="form-group")
-                input(type='text', name='answer3' autocomplete="off" required="required")
-                label(for='answer3' class="control-label") Answer 3:
-                i(class="bar")
+                div(class='answer1') A. 33
+                div(class='answer2') B. 34
+                div(class='answer3') C. 35
+                div(class='answer4') C. 36+
             div(class="button-container" id="button-container")
                 input(type='submit', value='Create User' class="button")
         div(class="button-container" id="button-container")
