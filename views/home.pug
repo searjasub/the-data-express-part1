@@ -3,3 +3,7 @@ extends header
 block content
     h1 This is your Home Page, #{person.username}! :D
     h3 #{cookie} at #{time}
+    
+    canvas#graph1(width='800', height='600')
+    legend#legend1(for="myCanvas")
+    script(type='text/javascript', src='script.js')
