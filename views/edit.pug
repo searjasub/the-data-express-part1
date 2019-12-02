@@ -4,6 +4,7 @@ block content
     div(class="container-form")
         form(id='form', method='post', action='/edit')
             h2 Edit your Profile
+
             div(class="form-group")
                 input(type='text', name='username' autocomplete="off" required="required", value=person.username)
                 label(for='username' class="control-label") Username:

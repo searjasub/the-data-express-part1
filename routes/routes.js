@@ -1,5 +1,5 @@
 const config = require('../config');
-let mongoose = require('mongoose');;
+let mongoose = require('mongoose');
 const auth = require('./auth.js');
 const cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
@@ -12,6 +12,7 @@ mdb.once('open', function (callback) {
 });
 
 let personSchema = mongoose.Schema({
+    url : String,
     username: String,
     password: String,
     age: String,
@@ -100,15 +101,12 @@ exports.pushEdit = async (req, res) => {
     if(!person){
         return;
     }
-
+    person.url = req.body.profile;
     person.username = req.body.username;
     person.age = req.body.age;
     person.email = req.body.email;
-    person.question1 = req.body.question1;
     person.answer1 = req.body.answer1;
-    person.question2 = req.body.question2;
     person.answer2 = req.body.answer2;
-    person.question3 = req.body.question3;
     person.answer3 = req.body.answer3;
 
     if(person.password !== req.body.password){
@@ -169,15 +167,16 @@ exports.logout = (req, res) => {
 const pass = require('./passwords.js');
 exports.createPerson = (req, res) => {
     let person = new Person({
+        url : req.body.profile,
         username: req.body.username,
         password: pass.saltAndHash(req.body.password),
         age: req.body.age,
         email: req.body.email,
-        question1 : req.body.question1,
+        question1 : "What's your favorite OS?",
         answer1: req.body.answer1,
-        question2 : req.body.question2,
+        question2 : "What is your current degree plan?",
         answer2: req.body.answer2,
-        question3 : req.body.question3,
+        question3 : "What is your cohort?",
         answer3: req.body.answer3
     });
     person.save((err, person) => {

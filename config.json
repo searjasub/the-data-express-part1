@@ -42,5 +42,12 @@
     ["6","In what city does your nearest sibling live? "],
     ["7","What was the last name of your third grade teacher?"],
     ["8","What school did you attend for sixth grade?"]
+  ],
+  "eyes" : [
+    {"name": "Cream", "value": "1"},
+    {"name": "Cheese", "value": "2"},
+    {"name": "Milk", "value": "3"},
+    {"name": "Honey", "value": "4"},
+    {"name": "Toast", "value": "5"}
   ]
 }

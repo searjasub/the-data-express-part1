@@ -252,7 +252,7 @@ table.gridtable td {
     display: none;
 }
 
-.form-group input[type="customType"]{
+.form-group input[type="customType"] {
     line-height: 1;
     white-space: pre;
     align-items: flex-start;
@@ -260,6 +260,7 @@ table.gridtable td {
     box-sizing: border-box;
 }
 
+.form-group select,
 .form-group input:focus,
 .form-group input:valid,
 .form-group input.form-file,
@@ -267,6 +268,7 @@ table.gridtable td {
     color: #333;
 }
 
+.form-group select ~ .control-label,
 .form-group input:focus ~ .control-label,
 .form-group input:valid ~ .control-label,
 .form-group input.form-file ~ .control-label,
@@ -277,10 +279,12 @@ table.gridtable td {
     left: 0;
 }
 
+.form-group select:focus,
 .form-group input:focus {
     outline: none;
 }
 
+.form-group select:focus ~ .control-label,
 .form-group input:focus ~ .control-label {
     color: #337ab7;
 }
