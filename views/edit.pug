@@ -4,7 +4,59 @@ block content
     div(class="container-form")
         form(id='form', method='post', action='/edit')
             h2 Edit your Profile
+            img(src=person.url width="200" height="200" id="image")
+            input(name="profile" type="hidden" value=src)
+            div(class="form-group")
+                span Eye
+                select(id="select-eye" onchange="onChange()")
+                    each optionNumber in [1,2,3,4,5,6,7,9]
+                        option(value=optionNumber) #{optionNumber}
+                span Nose
+                select(id="select-nose" onchange="onChange()")
+                    each optionNumber in [2,3,4,5,6,7,8]
+                        option(value=optionNumber) #{optionNumber}
+                span Mouth
+                select(id="select-mouth" onchange="onChange()")
+                    each optionNumber in [1, 10, 11, 3, 5, 6, 7, 9]
+                        option(value=optionNumber) #{optionNumber}
+                span Color
+                select(id="select-color" onchange="onChange()")
+                    each optionValue in ["blue", "green", "red", "orange"]
+                        option(value=optionValue) #{optionValue}
+            script(type="text/javascript").
 
+                let url;
+                function onChange() {
+                    let eye = document.getElementById("select-eye");
+                    let selectedEye = eye.options[eye.selectedIndex].value;
+                    let nose = document.getElementById("select-nose");
+                    let selectedNose = nose.options[nose.selectedIndex].value;
+                    let mouth = document.getElementById("select-mouth");
+                    let selectedMouth = mouth.options[mouth.selectedIndex].value;
+                    let color = document.getElementById("select-color");
+                    let selectedColor = color.options[color.selectedIndex].value;
+                    let hex;
+                    switch (selectedColor) {
+                        case "blue":
+                            hex = "3366AA"
+                            break;
+                        case "red":
+                            hex = "FF0000"
+                            break;
+                        case "green":
+                            hex = "00AA00"
+                            break;
+                        case "orange":
+                            hex = "FFa500"
+                            break;
+                    }
+                    url = "https://api.adorable.io/avatars/face/eyes" + selectedEye + "/nose" + selectedNose + "/mouth" + selectedMouth + "/" + hex;
+                    let img = document.getElementById("image")
+                    console.log(url)
+                    img.setAttribute("src", url);
+                    return url;
+                }
+            input(name="picture" type="hidden" value=url)
             div(class="form-group")
                 input(type='text', name='username' autocomplete="off" required="required", value=person.username)
                 label(for='username' class="control-label") Username:
@@ -22,35 +74,37 @@ block content
                 label(for='age' class="control-label") Age:
                 i(class="bar")
             div(class="form-group")
-                label(for='question1' class="control-label-select") Security Question 1:
-                select(name='question1')
-                    each item in config.category1
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question1') What's your favorite OS?
             div(class="form-group")
-                input(type='text', name='answer1' autocomplete="off" required="required", value=person.answer1)
-                label(for='answer1' class="control-label") Answer 1:
-                i(class="bar")
+                div() 1. Windows
+                div() 2. MacOS
+                div() 3. Linux
+                div(class="form-group")
+                    input(type='number', name='answer1' autocomplete="off" required="required" min="1" max="3" value=person.answer1)
+                    label(for='answer1' class="control-label") Your Answer:
+                    i(class="bar")
             div(class="form-group")
-                label(for='question2' class="control-label-select") Security Question 2:
-                select(name='question2')
-                    each item in config.category2
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question2') What is your current degree plan?
             div(class="form-group")
-                input(type='text', name='answer2' autocomplete="off" required="required", value=person.answer2)
-                label(for='answer2' class="control-label") Answer 2:
-                i(class="bar")
+                div() 1. CS
+                div() 2. Web
+                div() 3. IS
+                div() 4. SE
+                div(class="form-group")
+                    input(type='number', name='answer2' autocomplete="off" required="required" min="1" max="4" value=person.answer2)
+                    label(for='answer2' class="control-label") Your Answer:
+                    i(class="bar")
             div(class="form-group")
-                label(for='question3' class="control-label-select") Security Question 3:
-                select(name='question3')
-                    each item in config.category3
-                        option(value=item[1]) #{item[1]}
-                i(class="bar")
+                label(for='question3') What is your cohort?
             div(class="form-group")
-                input(type='text', name='answer3' autocomplete="off" required="required", value=person.answer3)
-                label(for='answer3' class="control-label") Answer 3:
-                i(class="bar")
+                div() 1. 33
+                div() 2. 34
+                div() 3. 35
+                div() 4. 36+
+                div(class="form-group")
+                    input(type='number', name='answer3' autocomplete="off" required="required" min="1" max="4" value=person.answer3)
+                    label(for='answer3' class="control-label") Your Answer:
+                    i(class="bar")
             div(class="button-container" id="button-container-save")
                 input(type='submit', value='Save new configuration' class="button")
     div(class="container-form")

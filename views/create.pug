@@ -14,8 +14,7 @@ block content
                 -let color = ""
                 -for (let i = 0; i < 6; i++) {color += letters[(Math.floor(Math.random() * 16))];}
                 -let src = "https://api.adorable.io/avatars/face/eyes" + rngEye + "/nose" + rngNose + "/mouth" + availableMouth[rngMouth] +"/" + color;
-                img(id="image0" width="200" height="200"
-                    src=src)
+                img(id="image0" width="200" height="200" src=src)
                 input(name="profile" type="hidden" value=src)
             div(class="form-group")
                 input(type='text', name='username' autocomplete="off" required="required")
@@ -40,7 +39,7 @@ block content
                 div() B. MacOS
                 div() C. Linux
                 div(class="form-group") Select your answer
-                    select(class='answer1')
+                    select(class='answer1' name='answer1')
                         option(value='A') A
                         option(value='B') B
                         option(value='C') C
@@ -52,7 +51,7 @@ block content
                 div() C. IS
                 div() D. SE
                 div(class="form-group")
-                    select(class='answer1')
+                    select(class='answer1' name='answer2')
                         option(value='A') A
                         option(value='B') B
                         option(value='C') C
@@ -65,7 +64,7 @@ block content
                 div() C. 35
                 div() D. 36+
                 div(class="form-group")
-                    select(class='answer1')
+                    select(class='answer1' name='answer3')
                         option(value='A') A
                         option(value='B') B
                         option(value='C') C

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/searjasub/the-data-express-part1#readme",
   "dependencies": {
+    "@material/slider": "^4.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
