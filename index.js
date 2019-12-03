@@ -31,12 +31,12 @@ app.get('/logout', asyncRoute(routes.logout));
 app.get('/edit', asyncRoute(routes.edit));
 app.get('/create', asyncRoute(routes.create));
 app.get('/home', asyncRoute(routes.home));
-app.get('/api', asyncRoute(routes.api));
 
 app.post('/delete', urlencodedParser, asyncRoute(routes.pushDelete));
 app.post('/edit', urlencodedParser, asyncRoute(routes.pushEdit));
 app.post('/create', urlencodedParser, asyncRoute(routes.createPerson));
 app.post('/login', urlencodedParser, asyncRoute(auth.login));
 app.post('/logout', urlencodedParser, asyncRoute(auth.logout));
+app.post('/api', urlencodedParser, asyncRoute(routes.api))
 
 app.listen(3010);

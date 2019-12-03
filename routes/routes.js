@@ -55,9 +55,21 @@ exports.index = (req, res) => {
 };
 
 exports.api = async (req,res) => {
+    Person.count({answer1 : "A"});
+    Person.count({answer1 : "B"});
+    Person.count({answer1 : "C"});
+    Person.count({answer2 : "A"});
+    Person.count({answer2 : "B"});
+    Person.count({answer2 : "C"});
+    Person.count({answer2 : "D"});
+    Person.count({answer3 : "A"});
+    Person.count({answer3 : "B"});
+    Person.count({answer3 : "C"});
+    Person.count({answer3 : "D"});
   res.render('api', {
       title: 'api',
-      "config": config
+
+
   });
 };
 
