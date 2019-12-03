@@ -24,7 +24,7 @@ const urlencodedParser = bodyParser.urlencoded({
 });
 
 const asyncRoute = route => (req, res, next = console.error) =>
-  Promise.resolve(route(req, res)).catch(next)
+    Promise.resolve(route(req, res)).catch(next);
 
 app.get('/', asyncRoute(routes.login));
 app.get('/logout', asyncRoute(routes.logout));

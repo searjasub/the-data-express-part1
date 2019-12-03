@@ -117,8 +117,11 @@ exports.pushEdit = async (req, res) => {
     person.username = req.body.username;
     person.age = req.body.age;
     person.email = req.body.email;
+    person.question1 = "What's your favorite OS?";
     person.answer1 = req.body.answer1;
+    person.question2 = "What is your current degree plan?";
     person.answer2 = req.body.answer2;
+    person.question3 = "What is your cohort?";
     person.answer3 = req.body.answer3;
 
     if(person.password !== req.body.password){
