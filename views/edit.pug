@@ -4,61 +4,71 @@ block content
     div(class="container-form")
         form(id='form', method='post', action='/edit')
             h2 Edit your Profile
-            img(src=person.url width="200" height="200" id="image")
-            input(name="profile" type="hidden" value=src)
+            img(src=person.profile width="200" height="200" id="image")
+            input(name="profile" type="hidden" value=src id="profile")
             div(class="form-group")
                 span Eye
                 select(id="select-eye" onchange="onChange()")
-                    each optionNumber in [1,2,3,4,5,6,7,9]
+                    each optionNumber in [1,2,3,4,5,6,7,8]
                         option(value=optionNumber) #{optionNumber}
                 span Nose
                 select(id="select-nose" onchange="onChange()")
-                    each optionNumber in [2,3,4,5,6,7,8]
+                    each optionNumber in [1,2,3,4,5,6,7,8]
                         option(value=optionNumber) #{optionNumber}
                 span Mouth
                 select(id="select-mouth" onchange="onChange()")
-                    each optionNumber in [1, 10, 11, 3, 5, 6, 7, 9]
+                    each optionNumber in [1, 2, 3, 4, 5, 6, 7, 8]
                         option(value=optionNumber) #{optionNumber}
                 span Color
                 select(id="select-color" onchange="onChange()")
                     each optionValue in ["blue", "green", "red", "orange"]
                         option(value=optionValue) #{optionValue}
+            div(class="form-group")
+                input(name="profile" type="hidden")
             script(type="text/javascript").
                 let url;
+                let img = document.getElementById("image");
                 function onChange() {
                     let eye = document.getElementById("select-eye");
                     let selectedEye = eye.options[eye.selectedIndex].value;
+                    if (selectedEye === '8') {
+                        selectedEye = '9';
+                    } else if (selectedEye === '2') {
+                        selectedEye = '10';
+                    }
                     let nose = document.getElementById("select-nose");
                     let selectedNose = nose.options[nose.selectedIndex].value;
                     let mouth = document.getElementById("select-mouth");
                     let selectedMouth = mouth.options[mouth.selectedIndex].value;
+                    if (selectedMouth === '2') {
+                        selectedMouth = '10'
+                    } else if (selectedMouth === '4') {
+                        selectedMouth = '11';
+                    } else if (selectedMouth === '8') {
+                        selectedMouth = '9';
+                    }
                     let color = document.getElementById("select-color");
                     let selectedColor = color.options[color.selectedIndex].value;
                     let hex;
-                    switch (selectedColor) {
-                        case "blue":
-                            hex = "3366AA"
-                            break;
-                        case "red":
-                            hex = "FF0000"
-                            break;
-                        case "green":
-                            hex = "00AA00"
-                            break;
-                        case "orange":
-                            hex = "FFa500"
-                            break;
+                    if (selectedColor === "blue") {
+                        hex = "3366AA"
+                    } else if (selectedColor === "red") {
+                        hex = "FF0000"
+                    } else if (selectedColor === "green") {
+                        hex = "00AA00"
+                    } else if (selectedColor === "orange") {
+                        hex = "FFa500"
                     }
-                    url = "https://api.adorable.io/avatars/face/eyes" + selectedEye + "/nose" + selectedNose + "/mouth" + selectedMouth + "/" + hex;
-                    let img = document.getElementById("image")
-                    console.log(url)
-                    img.setAttribute("src", url);
-                    let input = document.getElementById("picture");
-                    input.setAttribute("value", url);
+                    url = "https://api.adorable.io/avatars/face/eyes" + selectedEye + "/nose" + (+selectedNose + 1) + "/mouth" + selectedMouth + "/" + hex;
+                    img.setAttribute("src", "" + url);
+                    update()
+                };
 
-                    return url;
+                function update() {
+                    let profile = document.getElementById("profile");
+                    profile.setAttribute("value", url);
+
                 }
-            input(name="picture" type="hidden" value=url id="picture")
             div(class="form-group")
                 input(type='text', name='username' autocomplete="off" required="required", value=person.username)
                 label(for='username' class="control-label") Username:

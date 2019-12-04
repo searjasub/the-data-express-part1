@@ -12,7 +12,7 @@ mdb.once('open', function (callback) {
 });
 
 let personSchema = mongoose.Schema({
-    url : String,
+    profile : String,
     username: String,
     password: String,
     age: String,
@@ -104,7 +104,7 @@ exports.pushEdit = async (req, res) => {
     if(!person){
         return;
     }
-    person.url = req.body.profile;
+    person.profile = req.body.profile[0];
     person.username = req.body.username;
     person.age = req.body.age;
     person.email = req.body.email;
@@ -173,7 +173,7 @@ exports.logout = (req, res) => {
 const pass = require('./passwords.js');
 exports.createPerson = (req, res) => {
     let person = new Person({
-        url : req.body.profile,
+        profile : req.body.profile,
         username: req.body.username,
         password: pass.saltAndHash(req.body.password),
         age: req.body.age,
