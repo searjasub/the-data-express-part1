@@ -4,27 +4,32 @@ block content
     div(class="container-form")
         form(id='form', method='post', action='/edit')
             h2 Edit your Profile
-            img(src=person.profile width="200" height="200" id="image")
-            input(name="profile" type="hidden" value=src id="profile")
-            div(class="form-group")
-                span Eye
-                select(id="select-eye" onchange="onChange()")
-                    each optionNumber in [1,2,3,4,5,6,7,8]
-                        option(value=optionNumber) #{optionNumber}
-                span Nose
-                select(id="select-nose" onchange="onChange()")
-                    each optionNumber in [1,2,3,4,5,6,7,8]
-                        option(value=optionNumber) #{optionNumber}
-                span Mouth
-                select(id="select-mouth" onchange="onChange()")
-                    each optionNumber in [1, 2, 3, 4, 5, 6, 7, 8]
-                        option(value=optionNumber) #{optionNumber}
-                span Color
-                select(id="select-color" onchange="onChange()")
-                    each optionValue in ["blue", "green", "red", "orange"]
-                        option(value=optionValue) #{optionValue}
-            div(class="form-group")
-                input(name="profile" type="hidden")
+            table
+                tr(class="tr")
+                    td(class="td")
+                        img(src=person.profile width="230" height="230" id="image")
+                        input(name="profile" type="hidden" value=src id="profile")
+                    td(class="td second-one")
+                        div(class="form-group" )
+                            select(id="select-eye" onchange="onChange()")
+                                each optionNumber in [1,2,3,4,5,6,7,8]
+                                    option(value=optionNumber) #{optionNumber}
+                            label(for="select-eye" class="control-label") Eye
+                        div(class="form-group" )
+                            select(id="select-nose" onchange="onChange()")
+                                each optionNumber in [1,2,3,4,5,6,7,8]
+                                    option(value=optionNumber) #{optionNumber}
+                            label(for="select-nose" class="control-label") Nose
+                        div(class="form-group" )
+                            select(id="select-mouth" onchange="onChange()")
+                                each optionNumber in [1, 2, 3, 4, 5, 6, 7, 8]
+                                    option(value=optionNumber) #{optionNumber}
+                            label(for="select-mouth" class="control-label") Mouth
+                        div(class="form-group" )
+                            select(id="select-color" onchange="onChange()")
+                                each optionValue in ["blue", "green", "red", "orange"]
+                                    option(value=optionValue) #{optionValue}
+                            label(for="select-color" class="control-label") Color
             script(type="text/javascript").
                 let url;
                 let img = document.getElementById("image");
