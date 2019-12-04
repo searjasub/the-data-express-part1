@@ -24,7 +24,6 @@ block content
                     each optionValue in ["blue", "green", "red", "orange"]
                         option(value=optionValue) #{optionValue}
             script(type="text/javascript").
-
                 let url;
                 function onChange() {
                     let eye = document.getElementById("select-eye");
@@ -54,9 +53,12 @@ block content
                     let img = document.getElementById("image")
                     console.log(url)
                     img.setAttribute("src", url);
+                    let input = document.getElementById("picture");
+                    input.setAttribute("value", url);
+
                     return url;
                 }
-            input(name="picture" type="hidden" value=url)
+            input(name="picture" type="hidden" value=url id="picture")
             div(class="form-group")
                 input(type='text', name='username' autocomplete="off" required="required", value=person.username)
                 label(for='username' class="control-label") Username:
