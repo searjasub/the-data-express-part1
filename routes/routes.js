@@ -55,22 +55,13 @@ exports.index = (req, res) => {
 };
 
 exports.api = async (req,res) => {
-    Person.count({answer1 : "A"});
-    Person.count({answer1 : "B"});
-    Person.count({answer1 : "C"});
-    Person.count({answer2 : "A"});
-    Person.count({answer2 : "B"});
-    Person.count({answer2 : "C"});
-    Person.count({answer2 : "D"});
-    Person.count({answer3 : "A"});
-    Person.count({answer3 : "B"});
-    Person.count({answer3 : "C"});
-    Person.count({answer3 : "D"});
-  res.render('api', {
-      title: 'api',
-
-
-  });
+    person = await auth.tryLoginActiveUser(req, res);
+    try {
+        var result = await Person.find().exec();
+        res.send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
 };
 
 exports.home = async (req,res) => {

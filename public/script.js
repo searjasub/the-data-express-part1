@@ -1,4 +1,4 @@
-import {MDCSlider} from '@material/slider';
+//import {MDCSlider} from '@material/slider';
 
 function login() {
     let url = "/create";
@@ -10,34 +10,83 @@ function login() {
 window.onload = function(e){
     let canvas1 = document.getElementById('graph1');
     let context1 = canvas1.getContext('2d');
-    var legend = document.getElementById("legend1");
+    let canvas2 = document.getElementById('graph2');
+    let context2 = canvas2.getContext('2d');
+    let canvas3 = document.getElementById('graph3');
+    let context3 = canvas3.getContext('2d');
+
+    var legend1 = document.getElementById("legend1");
+    var legend2 = document.getElementById("legend2");
+    var legend3 = document.getElementById("legend3");
     setInterval(async function(){
         let canvConv = {
             'context': context1, 
             'canvas': canvas1,
             'padding': 20,
-            'legend': legend
+            'legend': legend1
         };
         
         let data = await getData("localhost:3010/api");
-        await graphRaw(canvConv, data);
+        await graphRaw(canvConv, data[0]);
+
+        canvConv = {
+            'context': context2, 
+            'canvas': canvas2,
+            'padding': 20,
+            'legend': legend2
+        };
+        await graphRaw(canvConv, data[1]);
+
+        canvConv = {
+            'context': context3, 
+            'canvas': canvas3,
+            'padding': 20,
+            'legend': legend3
+        };
+        await graphRaw(canvConv, data[2]);
     }, 1000);
 };
 
 async function getData(dataUrl){
-    var myVinyls = {
-        "Classical music": 10,
-        "Alternative rock": 14,
-        "Pop": 2,
-        "Jazz": 12
-    };
-    return myVinyls;
+    let resp = await fetch("http://localhost:3010/api");
+    let raw = await resp.json();
+
+    let answ1 = {};
+    let answ2 = {};
+    let answ3 = {};
+    
+    raw.forEach(element => {
+        answ1.__q = element.question1;
+        answ2.__q = element.question2;
+        answ3.__q = element.question3;
+
+        if(element.answer1 in answ1){
+            answ1[element.answer1] ++;
+        }else{
+            answ1[element.answer1] = 1;
+        }
+        if(element.answer2 in answ2){
+            answ2[element.answer2] ++;
+        }else{
+            answ2[element.answer2] = 1;
+        }
+        if(element.answer3 in answ3){
+            answ3[element.answer3] ++;
+        }else{
+            answ3[element.answer3] = 1;
+        }
+    });
+
+    return [answ1, answ2, answ3];
 }
 async function graphRaw(canvConv, data){
     canvConv.context.clearRect(0, 0, canvConv.canvas.width, canvConv.canvas.height);
 
     var maxValue = 0;
     for (var categ in data){
+        if(categ.includes("__")){
+            continue;
+        }
         maxValue = Math.max(maxValue,data[categ]);
     }
     maxValue = Math.ceil(maxValue/5)*5 + 5;
@@ -79,6 +128,10 @@ async function graphRaw(canvConv, data){
     
     var barIndex = 0;
     for (categ in data){
+        if(categ.includes("__")){
+            continue;
+        }
+
         var val = data[categ];
         var barHeight = Math.round(canvasActualHeight * val/maxValue);
         drawRect(
@@ -106,7 +159,7 @@ async function graphRaw(canvConv, data){
     canvConv.context.textAlign="center";
     canvConv.context.fillStyle = "#000000";
     canvConv.context.font = "bold 14px Arial";
-    canvConv.context.fillText("seriesName", canvConv.canvas.width/2,canvConv.canvas.height);
+    canvConv.context.fillText(data.__q, canvConv.canvas.width/2,canvConv.canvas.height);
     canvConv.context.restore();
 }
 

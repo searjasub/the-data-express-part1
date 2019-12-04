@@ -38,6 +38,6 @@ app.post('/edit', urlencodedParser, asyncRoute(routes.pushEdit));
 app.post('/create', urlencodedParser, asyncRoute(routes.createPerson));
 app.post('/login', urlencodedParser, asyncRoute(auth.login));
 app.post('/logout', urlencodedParser, asyncRoute(auth.logout));
-app.post('/api', urlencodedParser, asyncRoute(routes.api))
+app.post('/api', urlencodedParser, asyncRoute(routes.apipost));
 
 app.listen(3010);
