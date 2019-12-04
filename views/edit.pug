@@ -87,41 +87,41 @@ block content
                 i(class="bar")
             div(class="form-group")
                 label(for='question1') What's your favorite OS?
-            div(class="form-group")
                 div() A. Windows
                 div() B. MacOS
                 div() C. Linux
-                div(class="form-group") Select your answer
-                    select(class='answer1' name='answer1')
-                        option(value='A. Windows') A. Windows
-                        option(value='B. MacOS') B. MacOS
-                        option(value='C. Linux') C. Linux
+                div(class="form-group") Change your answer
+                    select(class='answer1' name='answer1' )
+                        option(value='A. Windows' selected=person.answer1 === 'A. Windows') A. Windows
+                        option(value='B. MacOS' selected=person.answer1 === 'B. MacOS') B. MacOS
+                        option(value='C. Linux' selected=person.answer1 === 'C. Linux') C. Linux
+                    hr
             div(class="form-group")
                 label(for='question2') What is your current degree plan?
-            div(class="form-group")
                 div() A. CS
                 div() B. Web
                 div() C. IS
                 div() D. SE
-                div(class="form-group")
+                div(class="form-group") Change your answer
                     select(class='answer1' name='answer2')
-                        option(value='A. CS') A. CS
-                        option(value='B. Web') B. Web
-                        option(value='C. IS') C. IS
-                        option(value='D. SE') D. SE
+                        option(value='A. CS' selected=person.answer2 === 'A. CS') A. CS
+                        option(value='B. Web' selected=person.answer2 === 'B. Web') B. Web
+                        option(value='C. IS' selected=person.answer2 === 'C. IS') C. IS
+                        option(value='D. SE' selected=person.answer2 === 'D. SE') D. SE
+                    hr
             div(class="form-group")
-                label(for='question3') What is your cohort?
-            div(class="form-group")
+                label What is your cohort?
                 div() A. 33
                 div() B. 34
                 div() C. 35
                 div() D. 36+
-                div(class="form-group")
+                div(class="form-group") Change your answer
                     select(class='answer1' name='answer3')
-                        option(value='A. 33') A. 33
-                        option(value='B. 34') B. 34
-                        option(value='C. 35') C. 35
-                        option(value='D. 36+') D. 36+
+                        option(value='A. 33' selected=person.answer3 === 'A. 33') A. 33
+                        option(value='B. 34' selected=person.answer3 === 'B. 34') B. 34
+                        option(value='C. 35' selected=person.answer3 === 'C. 35') C. 35
+                        option(value='D. 36+' selected=person.answer3 === 'D. 36+') D. 36+
+                    hr
             div(class="button-container" id="button-container-save")
                 input(type='submit', value='Save new configuration' class="button")
     div(class="container-form")
