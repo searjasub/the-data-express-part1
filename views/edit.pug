@@ -76,35 +76,40 @@ block content
             div(class="form-group")
                 label(for='question1') What's your favorite OS?
             div(class="form-group")
-                div() 1. Windows
-                div() 2. MacOS
-                div() 3. Linux
-                div(class="form-group")
-                    input(type='number', name='answer1' autocomplete="off" required="required" min="1" max="3" value=person.answer1)
-                    label(for='answer1' class="control-label") Your Answer:
-                    i(class="bar")
+                div() A. Windows
+                div() B. MacOS
+                div() C. Linux
+                div(class="form-group") Select your answer
+                    select(class='answer1' name='answer1')
+                        option(value='A. Windows') A. Windows
+                        option(value='B. MacOS') B. MacOS
+                        option(value='C. Linux') C. Linux
             div(class="form-group")
                 label(for='question2') What is your current degree plan?
             div(class="form-group")
-                div() 1. CS
-                div() 2. Web
-                div() 3. IS
-                div() 4. SE
+                div() A. CS
+                div() B. Web
+                div() C. IS
+                div() D. SE
                 div(class="form-group")
-                    input(type='number', name='answer2' autocomplete="off" required="required" min="1" max="4" value=person.answer2)
-                    label(for='answer2' class="control-label") Your Answer:
-                    i(class="bar")
+                    select(class='answer1' name='answer2')
+                        option(value='A. CS') A. CS
+                        option(value='B. Web') B. Web
+                        option(value='C. IS') C. IS
+                        option(value='D. SE') D. SE
             div(class="form-group")
                 label(for='question3') What is your cohort?
             div(class="form-group")
-                div() 1. 33
-                div() 2. 34
-                div() 3. 35
-                div() 4. 36+
+                div() A. 33
+                div() B. 34
+                div() C. 35
+                div() D. 36+
                 div(class="form-group")
-                    input(type='number', name='answer3' autocomplete="off" required="required" min="1" max="4" value=person.answer3)
-                    label(for='answer3' class="control-label") Your Answer:
-                    i(class="bar")
+                    select(class='answer1' name='answer3')
+                        option(value='A. 33') A. 33
+                        option(value='B. 34') B. 34
+                        option(value='C. 35') C. 35
+                        option(value='D. 36+') D. 36+
             div(class="button-container" id="button-container-save")
                 input(type='submit', value='Save new configuration' class="button")
     div(class="container-form")
